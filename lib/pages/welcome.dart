@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                       await Navigator.push(
                         context,
                         PageTransition(
-                            child: const LoginScreen(),
+                            child: LoginScreen(),
                             type: PageTransitionType.fade),
                       );
                       setState(() {

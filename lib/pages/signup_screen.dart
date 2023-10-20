@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_page/pages/colors.dart';
+import 'package:login_page/pages/login_screen.dart';
 import 'package:lottie/lottie.dart';
 
 class SignupPage extends StatelessWidget {
@@ -204,21 +205,36 @@ class SignupPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Row(
+                const SizedBox(height: 16),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Already have an acount?",
                       style: TextStyle(fontSize: 14, color: Colors.white),
                     ),
-                    SizedBox(width: 3),
-                    Text(
-                      "Login",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: buttoncolor),
+                    const SizedBox(width: 3),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: maincolor,
+                        elevation: 0.0,
+                        padding: EdgeInsets.zero,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: buttoncolor,
+                        ),
+                      ),
                     )
                   ],
                 )

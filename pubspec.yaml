@@ -38,6 +38,8 @@ dependencies:
   swipeable_button_view: ^0.0.2
   page_transition: ^2.0.4
   google_fonts: ^6.1.0
+  firebase_core: ^2.19.0
+  firebase_auth: ^4.11.1
 
 dev_dependencies:
   flutter_test:

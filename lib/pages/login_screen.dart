@@ -1,11 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login_page/pages/colors.dart';
+import 'package:login_page/pages/home_screen.dart';
 import 'package:login_page/pages/signup_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                         Icons.person,
                         color: Colors.white,
                       ),
-                      hintText: 'Enter Username',
+                      hintText: 'Email',
                       hintStyle: TextStyle(color: Colors.grey.shade500),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -94,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                         Icons.key_outlined,
                         color: Colors.white,
                       ),
-                      hintText: 'Enter Password',
+                      hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.grey.shade500),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -132,7 +142,7 @@ class LoginScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       PageTransition(
-                          child: const SignupPage(),
+                          child: const HomeScreen(),
                           type: PageTransitionType.fade),
                     );
                   },
@@ -215,18 +225,32 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Don't have an acount?",
                       style: TextStyle(fontSize: 14, color: Colors.white),
                     ),
-                    SizedBox(width: 3),
-                    Text(
-                      "Sign up",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: buttoncolor),
+                    const SizedBox(width: 3),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: maincolor,
+                        elevation: 0.0,
+                        padding: EdgeInsets.zero,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignupPage()),
+                        );
+                      },
+                      child: const Text(
+                        "Sign up",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: buttoncolor),
+                      ),
                     )
                   ],
                 )

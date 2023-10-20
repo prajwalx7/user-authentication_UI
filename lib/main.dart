@@ -1,10 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:login_page/auth.dart';
+import 'package:login_page/firebase_options.dart';
 import 'package:login_page/pages/colors.dart';
-import 'package:login_page/pages/login_screen.dart';
-import 'package:login_page/pages/signup_screen.dart';
-// import 'package:login_page/pages/welcome.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -19,11 +21,7 @@ class MyApp extends StatelessWidget {
         primaryColor: maincolor,
         scaffoldBackgroundColor: const Color(0xFF212121),
       ),
-      routes: {
-        "/": (context) => const LoginScreen(),
-        // "/login": (context) => const LoginScreen(),
-        "/signup": (context) => const SignupPage(),
-      },
+      home: const Auth(),
     );
   }
 }
