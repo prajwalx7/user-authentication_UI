@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login_page/pages/colors.dart';
 import 'package:login_page/pages/home_screen.dart';
@@ -7,15 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
-  }
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +42,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 160,
                         width: 160,
-                        child: Lottie.network(
-                            'https://assets3.lottiefiles.com/private_files/lf30_iraugwwv.json'),
+                        child: Lottie.asset('assets/animations/login.json'),
                       ),
                     ],
                   ),

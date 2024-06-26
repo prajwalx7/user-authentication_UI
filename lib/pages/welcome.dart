@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
                   height: 400,
                 ),
               ),
-              Lottie.asset('assets/mainpage.json'),
+              Lottie.asset('assets/splash.json'),
 
               //**********Swipeable Button**********
               Padding(
@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                       await Navigator.push(
                         context,
                         PageTransition(
-                            child: LoginScreen(),
+                            child: const LoginScreen(),
                             type: PageTransitionType.fade),
                       );
                       setState(() {

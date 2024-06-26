@@ -20,8 +20,8 @@ class SignupPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 40),
                   child: Container(
-                    child: Lottie.network(
-                        "https://lottie.host/860eae11-051d-4c0a-9d04-4f4dad2dca83/2qM17yulCo.json",
+                    child: Lottie.asset(
+                        "assets/animations/signup.json",
                         fit: BoxFit.cover,
                         height: 200,
                         width: 200),

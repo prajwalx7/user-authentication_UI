@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_page/pages/colors.dart';
-import 'package:login_page/pages/signup_screen.dart';
+import 'package:login_page/pages/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primaryColor: maincolor,
         scaffoldBackgroundColor: const Color(0xFF212121),
       ),
-      home: const SignupPage(),
+      home: const MainPage(),
     );
   }
 }
