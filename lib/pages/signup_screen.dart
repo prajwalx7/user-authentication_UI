@@ -21,10 +21,11 @@ class SignupPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 40),
                   child: Container(
                     child: Lottie.asset(
-                        "assets/animations/signup.json",
-                        fit: BoxFit.cover,
-                        height: 200,
-                        width: 200),
+                      "assets/animations/signup.json",
+                      fit: BoxFit.cover,
+                      height: 200,
+                      width: 200,
+                    ),
                   ),
                 ),
                 const Text(
@@ -49,6 +50,7 @@ class SignupPage extends StatelessWidget {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
+                      fillColor: Colors.transparent,
                       prefixIcon: const Icon(Icons.person, color: Colors.white),
                       labelStyle: const TextStyle(color: buttoncolor),
                       hintText: 'Username',
@@ -77,6 +79,7 @@ class SignupPage extends StatelessWidget {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
+                      fillColor: Colors.transparent,
                       prefixIcon: const Icon(Icons.mail, color: Colors.white),
                       labelStyle: const TextStyle(color: buttoncolor),
                       hintText: 'Email',
@@ -106,6 +109,7 @@ class SignupPage extends StatelessWidget {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
+                      fillColor: Colors.transparent,
                       prefixIcon: const Icon(Icons.key, color: Colors.white),
                       labelStyle: const TextStyle(color: buttoncolor),
                       hintText: 'Password',
@@ -130,8 +134,8 @@ class SignupPage extends StatelessWidget {
                 const ElevatedButton(
                   onPressed: null,
                   style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(buttoncolor),
-                    padding: MaterialStatePropertyAll(
+                    backgroundColor: WidgetStatePropertyAll(buttoncolor),
+                    padding: WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     ),
                   ),
@@ -214,7 +218,7 @@ class SignupPage extends StatelessWidget {
                       style: TextStyle(fontSize: 14, color: Colors.white),
                     ),
                     const SizedBox(width: 3),
-                    ElevatedButton(
+                    TextButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: maincolor,
                         elevation: 0.0,
@@ -224,7 +228,7 @@ class SignupPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
+                            builder: (context) => const LoginScreen(),
                           ),
                         );
                       },

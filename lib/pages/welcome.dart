@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
                   height: 400,
                 ),
               ),
-              Lottie.asset('assets/splash.json'),
+              Lottie.asset('assets/animations/splash.json'),
 
               //**********Swipeable Button**********
               Padding(
@@ -91,7 +91,9 @@ class _MainPageState extends State<MainPage> {
                     ),
                     buttonText: 'Get Started',
                     buttontextstyle: const TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w400),
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               )

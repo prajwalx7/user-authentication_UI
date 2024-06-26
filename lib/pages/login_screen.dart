@@ -60,10 +60,13 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       vertical: 15.0, horizontal: 30.0),
                   child: TextFormField(
+                    cursorColor: Colors.white,
                     textInputAction: TextInputAction.next,
                     autofocus: true,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.transparent,
                       prefixIcon: const Icon(
                         Icons.person,
                         color: Colors.white,
@@ -87,9 +90,12 @@ class LoginScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
+                    cursorColor: Colors.white,
                     textInputAction: TextInputAction.done,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.transparent,
                       prefixIcon: const Icon(
                         Icons.key_outlined,
                         color: Colors.white,
