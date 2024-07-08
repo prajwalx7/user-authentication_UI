@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_page/pages/colors.dart';
-import 'package:login_page/pages/login_screen.dart';
+import 'package:login_page/Screens/colors.dart';
 import 'package:lottie/lottie.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class StatrupScreen extends StatefulWidget {
+  const StatrupScreen({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<StatrupScreen> createState() => _StatrupScreenState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _StatrupScreenState extends State<StatrupScreen> {
   bool isFinished = false;
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,17 +81,13 @@ class _MainPageState extends State<MainPage> {
                       });
                     },
                     onFinish: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                            child: const LoginScreen(),
-                            type: PageTransitionType.fade),
-                      );
+                      await Navigator.pushReplacementNamed(
+                          context, '/loginscreen');
                       setState(() {
                         isFinished = false;
                       });
                     },
-                    activeColor: buttoncolor, //button color
+                    activeColor: buttoncolor,
                     isFinished: isFinished,
                     buttonWidget: const Icon(
                       Icons.arrow_forward_ios_rounded,

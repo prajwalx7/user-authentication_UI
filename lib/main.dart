@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:login_page/pages/colors.dart';
-import 'package:login_page/pages/home_screen.dart';
-import 'package:login_page/pages/login_screen.dart';
-import 'package:login_page/pages/signup_screen.dart';
-import 'package:login_page/pages/welcome.dart';
+import 'package:login_page/Screens/colors.dart';
+import 'package:login_page/Screens/home_screen.dart';
+import 'package:login_page/Screens/login_screen.dart';
+import 'package:login_page/Screens/signup_screen.dart';
+import 'package:login_page/Screens/startup_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primaryColor: maincolor,
         scaffoldBackgroundColor: const Color(0xFF212121),
       ),
-      home: const MainPage(),
+      home: const StatrupScreen(),
 
       routes: {
         '/loginscreen' : (context) => const LoginScreen(),

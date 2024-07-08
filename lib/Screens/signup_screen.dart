@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login_page/pages/colors.dart';
-import 'package:login_page/pages/login_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:login_page/Screens/colors.dart';
 import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
 
@@ -15,9 +15,9 @@ class SignupScreen extends StatefulWidget {
 class _SignupPageState extends State<SignupScreen> {
   final AuthServices _auth = AuthServices();
 
-  TextEditingController _usernamecontroller = TextEditingController();
-  TextEditingController _emailcontroller = TextEditingController();
-  TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _usernamecontroller = TextEditingController();
+  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
 
   @override
   void dispose() {
@@ -25,6 +25,15 @@ class _SignupPageState extends State<SignupScreen> {
     _emailcontroller.dispose();
     _passwordcontroller.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
   }
 
   @override
@@ -249,12 +258,7 @@ class _SignupPageState extends State<SignupScreen> {
                         padding: EdgeInsets.zero,
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        );
+                        Navigator.pushReplacementNamed(context, '/loginscreen');
                       },
                       child: const Text(
                         "Login",
@@ -286,5 +290,5 @@ class _SignupPageState extends State<SignupScreen> {
     } else {
       print("Error Occurred");
     }
-  } 
+  }
 }

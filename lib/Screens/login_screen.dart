@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:login_page/pages/colors.dart';
-import 'package:login_page/pages/home_screen.dart';
-import 'package:login_page/pages/signup_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:login_page/Screens/colors.dart';
+import 'package:login_page/Screens/home_screen.dart';
 import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
@@ -17,14 +17,23 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final AuthServices _auth = AuthServices();
 
-  TextEditingController _emailcontroller = TextEditingController();
-  TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
 
   @override
   void dispose() {
     _emailcontroller.dispose();
     _passwordcontroller.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: maincolor,
+      statusBarIconBrightness: Brightness.light,
+    ));
   }
 
   @override
@@ -258,11 +267,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.zero,
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignupScreen()),
-                        );
+                        Navigator.pushReplacementNamed(
+                            context, '/signupscreen');
                       },
                       child: const Text(
                         "Sign up",
