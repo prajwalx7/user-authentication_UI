@@ -1,12 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login_page/pages/colors.dart';
 import 'package:login_page/pages/home_screen.dart';
 import 'package:login_page/pages/signup_screen.dart';
+import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final AuthServices _auth = AuthServices();
+
+  TextEditingController _emailcontroller = TextEditingController();
+  TextEditingController _passwordcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailcontroller.dispose();
+    _passwordcontroller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +79,7 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       vertical: 15.0, horizontal: 30.0),
                   child: TextFormField(
+                    controller: _emailcontroller,
                     cursorColor: Colors.white,
                     textInputAction: TextInputAction.next,
                     autofocus: true,
@@ -90,6 +110,7 @@ class LoginScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
+                    controller: _passwordcontroller,
                     cursorColor: Colors.white,
                     textInputAction: TextInputAction.done,
                     style: const TextStyle(color: Colors.white),
@@ -135,6 +156,7 @@ class LoginScreen extends StatelessWidget {
                 //Button
                 ElevatedButton(
                   onPressed: () {
+                    _signIn();
                     Navigator.push(
                       context,
                       PageTransition(
@@ -143,8 +165,8 @@ class LoginScreen extends StatelessWidget {
                     );
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(buttoncolor),
-                    padding: const MaterialStatePropertyAll(
+                    backgroundColor: WidgetStateProperty.all(buttoncolor),
+                    padding: const WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     ),
                   ),
@@ -239,7 +261,7 @@ class LoginScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignupPage()),
+                              builder: (context) => const SignupScreen()),
                         );
                       },
                       child: const Text(
@@ -256,5 +278,19 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _signIn() async {
+    String email = _emailcontroller.text;
+    String password = _passwordcontroller.text;
+
+    User? user = await _auth.signinMethod(email, password);
+
+    if (user != null) {
+      print("Login Successful");
+      Navigator.pushNamed(context, '/homescreen');
+    } else {
+      print("Error Occurred");
+    }
   }
 }

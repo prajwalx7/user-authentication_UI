@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "733783664499",
+    "project_id": "user-authentication-1a762",
+    "storage_bucket": "user-authentication-1a762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733783664499:android:d766760b24d44ad3e58706",
+        "android_client_info": {
+          "package_name": "com.example.user_authentication_ui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApC_7Byek_bfrWW_uAGzXuvoPeuusDjUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

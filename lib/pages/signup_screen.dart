@@ -1,10 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login_page/pages/colors.dart';
 import 'package:login_page/pages/login_screen.dart';
+import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupScreen> {
+  final AuthServices _auth = AuthServices();
+
+  TextEditingController _usernamecontroller = TextEditingController();
+  TextEditingController _emailcontroller = TextEditingController();
+  TextEditingController _passwordcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernamecontroller.dispose();
+    _emailcontroller.dispose();
+    _passwordcontroller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +64,7 @@ class SignupPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
+                    controller: _usernamecontroller,
                     // maxLength: 15,
                     cursorColor: Colors.white,
                     textInputAction: TextInputAction.next,
@@ -74,6 +96,7 @@ class SignupPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
+                    controller: _emailcontroller,
                     cursorColor: Colors.white,
                     textInputAction: TextInputAction.done,
                     style: const TextStyle(color: Colors.white),
@@ -103,6 +126,7 @@ class SignupPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
+                    controller: _passwordcontroller,
                     cursorColor: Colors.white,
                     textInputAction: TextInputAction.next,
                     autofocus: true,
@@ -131,15 +155,15 @@ class SignupPage extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                const ElevatedButton(
-                  onPressed: null,
-                  style: ButtonStyle(
+                ElevatedButton(
+                  onPressed: _signUp,
+                  style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(buttoncolor),
                     padding: WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "SIGN UP",
                     style: TextStyle(
                         color: Colors.black,
@@ -249,4 +273,18 @@ class SignupPage extends StatelessWidget {
       ),
     );
   }
+
+  void _signUp() async {
+    String email = _emailcontroller.text;
+    String password = _passwordcontroller.text;
+
+    User? user = await _auth.signupMethod(email, password);
+
+    if (user != null) {
+      print("User Created");
+      Navigator.pushNamed(context, '/homescreen');
+    } else {
+      print("Error Occurred");
+    }
+  } 
 }
