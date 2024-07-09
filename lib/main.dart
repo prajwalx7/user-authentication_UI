@@ -6,7 +6,7 @@ import 'package:login_page/Screens/login_screen.dart';
 import 'package:login_page/Screens/signup_screen.dart';
 import 'package:login_page/Screens/startup_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -18,17 +18,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/signupscreen',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: maincolor,
         scaffoldBackgroundColor: const Color(0xFF212121),
       ),
       home: const StatrupScreen(),
-
       routes: {
-        '/loginscreen' : (context) => const LoginScreen(),
-        '/signupscreen' : (context) => const SignupScreen(),
-        '/homescreen' : (context) => const HomeScreen(),
+        '/loginscreen': (context) => const LoginScreen(),
+        '/signupscreen': (context) => const SignupScreen(),
+        '/homescreen': (context) => const HomeScreen(),
       },
     );
   }
