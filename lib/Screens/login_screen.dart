@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_page/Screens/colors.dart';
-import 'package:login_page/Screens/home_screen.dart';
 import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
-import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final AuthServices _auth = AuthServices();
+  final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
@@ -84,32 +83,52 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 // username
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 15.0, horizontal: 30.0),
-                  child: TextFormField(
-                    controller: _emailcontroller,
-                    cursorColor: Colors.white,
-                    textInputAction: TextInputAction.next,
-                    autofocus: true,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.transparent,
-                      prefixIcon: const Icon(
-                        Icons.person,
-                        color: Colors.white,
+                Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 30.0),
+                    child: TextFormField(
+                      controller: _emailcontroller,
+                      cursorColor: Colors.white,
+                      textInputAction: TextInputAction.next,
+                      autofocus: true,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.transparent,
+                        prefixIcon: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
+                        hintText: 'Email',
+                        hintStyle: TextStyle(color: Colors.grey.shade500),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: BorderSide(color: Colors.grey.shade500),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.blue),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
                       ),
-                      hintText: 'Email',
-                      hintStyle: TextStyle(color: Colors.grey.shade500),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        borderSide: BorderSide(color: Colors.grey.shade500),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        borderSide: const BorderSide(color: Colors.blue),
-                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter an email';
+                        }
+                        if (!value.contains('@gmail.com')) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                 ),
@@ -137,12 +156,31 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderSide: BorderSide(color: Colors.grey.shade500),
                       ),
                       focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(color: Colors.blue)),
+                        borderRadius: BorderRadius.circular(18.0),
+                        borderSide: const BorderSide(color: Colors.blue),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        borderSide: const BorderSide(color: Colors.red),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        borderSide: const BorderSide(color: Colors.red),
+                      ),
                     ),
                     obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      }
+                      return null;
+                    },
                   ),
                 ),
+
                 const SizedBox(
                   height: 10,
                 ),
@@ -165,13 +203,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 //Button
                 ElevatedButton(
                   onPressed: () {
-                    _signIn();
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                          child: const HomeScreen(),
-                          type: PageTransitionType.fade),
-                    );
+                    if (_formKey.currentState?.validate() ?? false) {
+                      _signIn();
+                    }
                   },
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(buttoncolor),
@@ -187,6 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
+
                 const SizedBox(
                   height: 30,
                 ),

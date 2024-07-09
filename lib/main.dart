@@ -18,9 +18,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/signupscreen',
+      initialRoute: '/loginscreen',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: Colors.deepPurple,
+          selectionHandleColor: Colors.deepPurple,
+        ),
         primaryColor: maincolor,
         scaffoldBackgroundColor: const Color(0xFF212121),
       ),
