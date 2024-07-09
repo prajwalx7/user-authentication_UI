@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         filled: true,
                         fillColor: Colors.transparent,
                         prefixIcon: const Icon(
-                          Icons.person,
+                          Icons.mail,
                           color: Colors.white,
                         ),
                         hintText: 'Email',

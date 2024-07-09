@@ -164,7 +164,8 @@ class _SignupPageState extends State<SignupScreen> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.transparent,
-                        prefixIcon: const Icon(Icons.key, color: Colors.white),
+                        prefixIcon:
+                            const Icon(Icons.key_outlined, color: Colors.white),
                         labelStyle: const TextStyle(color: buttoncolor),
                         hintText: 'Password',
                         hintStyle: TextStyle(color: Colors.grey.shade600),
@@ -192,7 +193,7 @@ class _SignupPageState extends State<SignupScreen> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a password';
                         }
-                        if (value.length <= 8) {
+                        if (value.length < 8) {
                           return 'Password must be at least 8 characters';
                         }
                         return null;
