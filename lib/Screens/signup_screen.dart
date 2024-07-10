@@ -273,9 +273,12 @@ class _SignupPageState extends State<SignupScreen> {
                           border: Border.all(color: Colors.grey.shade600),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Image.asset(
-                          'assets/images/google.png',
-                          height: 50,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Image.asset(
+                            'assets/images/google.png',
+                            height: 50,
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -287,9 +290,12 @@ class _SignupPageState extends State<SignupScreen> {
                           border: Border.all(color: Colors.grey.shade600),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Image.asset(
-                          'assets/images/apple.png',
-                          height: 50,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Image.asset(
+                            'assets/images/apple.png',
+                            height: 50,
+                          ),
                         ),
                       ),
                     ],
@@ -339,11 +345,11 @@ class _SignupPageState extends State<SignupScreen> {
 
       User? user = await _auth.signupMethod(email, password);
 
-      if (user != null) {
-        print("User Created");
+      if (user != null && mounted) {
+        // print("User Created");
         Navigator.pushNamed(context, '/homescreen');
       } else {
-        print("Error Occurred");
+        // print("Error Occurred");
       }
     }
   }
