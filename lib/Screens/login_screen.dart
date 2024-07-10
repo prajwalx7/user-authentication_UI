@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_page/Screens/colors.dart';
@@ -102,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             filled: true,
                             fillColor: Colors.transparent,
                             prefixIcon: const Icon(
-                              Icons.mail,
+                              CupertinoIcons.mail,
                               color: Colors.white,
                             ),
                             hintText: 'Email',
@@ -151,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               filled: true,
                               fillColor: Colors.transparent,
                               prefixIcon: const Icon(
-                                Icons.key_outlined,
+                                CupertinoIcons.lock,
                                 color: Colors.white,
                               ),
                               hintText: 'Password',
@@ -176,8 +177,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               suffixIcon: IconButton(
                                 icon: _isvisible
-                                    ? const Icon(Icons.visibility_off)
-                                    : const Icon(Icons.visibility),
+                                    ? const Icon(CupertinoIcons.eye_slash)
+                                    : const Icon(CupertinoIcons.eye),
                                 color: Colors.white54,
                                 onPressed: () {
                                   setState(() {

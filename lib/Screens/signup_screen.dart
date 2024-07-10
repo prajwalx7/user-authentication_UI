@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_page/Screens/colors.dart';
@@ -87,8 +88,8 @@ class _SignupPageState extends State<SignupScreen> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.transparent,
-                        prefixIcon:
-                            const Icon(Icons.person, color: Colors.white),
+                        prefixIcon: const Icon(CupertinoIcons.person,
+                            color: Colors.white),
                         labelStyle: const TextStyle(color: buttoncolor),
                         hintText: 'Username',
                         hintStyle: TextStyle(color: Colors.grey.shade600),
@@ -118,7 +119,8 @@ class _SignupPageState extends State<SignupScreen> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.transparent,
-                        prefixIcon: const Icon(Icons.mail, color: Colors.white),
+                        prefixIcon: const Icon(CupertinoIcons.mail,
+                            color: Colors.white),
                         labelStyle: const TextStyle(color: buttoncolor),
                         hintText: 'Email',
                         hintStyle: TextStyle(color: Colors.grey.shade600),
@@ -166,7 +168,7 @@ class _SignupPageState extends State<SignupScreen> {
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.transparent,
-                          prefixIcon: const Icon(Icons.key_outlined,
+                          prefixIcon: const Icon(CupertinoIcons.lock,
                               color: Colors.white),
                           labelStyle: const TextStyle(color: buttoncolor),
                           hintText: 'Password',
@@ -191,8 +193,8 @@ class _SignupPageState extends State<SignupScreen> {
                           ),
                           suffixIcon: IconButton(
                               icon: _isvisible
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                                  ? const Icon(CupertinoIcons.eye_slash)
+                                  : const Icon(CupertinoIcons.eye),
                               color: Colors.white54,
                               onPressed: () {
                                 setState(() {
