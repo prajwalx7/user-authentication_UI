@@ -20,6 +20,8 @@ class _SignupPageState extends State<SignupScreen> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
 
+  bool _isvisible = true;
+
   @override
   void dispose() {
     _usernamecontroller.dispose();
@@ -51,7 +53,7 @@ class _SignupPageState extends State<SignupScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Container(
                       child: Lottie.asset(
                         "assets/animations/signup.json",
@@ -162,33 +164,42 @@ class _SignupPageState extends State<SignupScreen> {
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        prefixIcon:
-                            const Icon(Icons.key_outlined, color: Colors.white),
-                        labelStyle: const TextStyle(color: buttoncolor),
-                        hintText: 'Password',
-                        hintStyle: TextStyle(color: Colors.grey.shade600),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 75, 57, 239),
+                          filled: true,
+                          fillColor: Colors.transparent,
+                          prefixIcon: const Icon(Icons.key_outlined,
+                              color: Colors.white),
+                          labelStyle: const TextStyle(color: buttoncolor),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(color: Colors.grey.shade600),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            borderSide: BorderSide(color: Colors.grey.shade400),
                           ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(color: Colors.red),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(color: Colors.red),
-                        ),
-                      ),
-                      obscureText: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 75, 57, 239),
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            borderSide: const BorderSide(color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            borderSide: const BorderSide(color: Colors.red),
+                          ),
+                          suffixIcon: IconButton(
+                              icon: _isvisible
+                                  ? const Icon(Icons.visibility_off)
+                                  : const Icon(Icons.visibility),
+                              color: Colors.white54,
+                              onPressed: () {
+                                setState(() {
+                                  _isvisible = !_isvisible;
+                                });
+                              })),
+                      obscureText: _isvisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a password';
@@ -201,7 +212,7 @@ class _SignupPageState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   ElevatedButton(
                     onPressed: _signUp,
@@ -212,7 +223,7 @@ class _SignupPageState extends State<SignupScreen> {
                       ),
                     ),
                     child: const Text(
-                      "SIGN UP",
+                      "Sign Up",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,

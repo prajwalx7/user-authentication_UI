@@ -19,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
 
+  bool _isvisible = true;
+
   @override
   void dispose() {
     _emailcontroller.dispose();
@@ -85,99 +87,117 @@ class _LoginScreenState extends State<LoginScreen> {
                 // username
                 Form(
                   key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15.0, horizontal: 30.0),
-                    child: TextFormField(
-                      controller: _emailcontroller,
-                      cursorColor: Colors.white,
-                      textInputAction: TextInputAction.next,
-                      autofocus: true,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        prefixIcon: const Icon(
-                          Icons.mail,
-                          color: Colors.white,
-                        ),
-                        hintText: 'Email',
-                        hintStyle: TextStyle(color: Colors.grey.shade500),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: BorderSide(color: Colors.grey.shade500),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(color: Colors.blue),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(color: Colors.red),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          borderSide: const BorderSide(color: Colors.red),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15.0, horizontal: 30.0),
+                        child: TextFormField(
+                          controller: _emailcontroller,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          autofocus: true,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.transparent,
+                            prefixIcon: const Icon(
+                              Icons.mail,
+                              color: Colors.white,
+                            ),
+                            hintText: 'Email',
+                            hintStyle: TextStyle(color: Colors.grey.shade500),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade500),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide: const BorderSide(color: Colors.blue),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide: const BorderSide(color: Colors.red),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide: const BorderSide(color: Colors.red),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter an email';
+                            }
+                            if (!value.contains('@gmail.com')) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
                         ),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter an email';
-                        }
-                        if (!value.contains('@gmail.com')) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
+                      //////
+                      const SizedBox(height: 10),
 
-                //password
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: TextFormField(
-                    controller: _passwordcontroller,
-                    cursorColor: Colors.white,
-                    textInputAction: TextInputAction.done,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.transparent,
-                      prefixIcon: const Icon(
-                        Icons.key_outlined,
-                        color: Colors.white,
+                      //password
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                        child: TextFormField(
+                          controller: _passwordcontroller,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.done,
+                          style: const TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.transparent,
+                              prefixIcon: const Icon(
+                                Icons.key_outlined,
+                                color: Colors.white,
+                              ),
+                              hintText: 'Password',
+                              hintStyle: TextStyle(color: Colors.grey.shade500),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade500),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                borderSide:
+                                    const BorderSide(color: Colors.blue),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                borderSide: const BorderSide(color: Colors.red),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                borderSide: const BorderSide(color: Colors.red),
+                              ),
+                              suffixIcon: IconButton(
+                                icon: _isvisible
+                                    ? const Icon(Icons.visibility_off)
+                                    : const Icon(Icons.visibility),
+                                color: Colors.white54,
+                                onPressed: () {
+                                  setState(() {
+                                    _isvisible = !_isvisible;
+                                  });
+                                },
+                              )),
+                          obscureText: _isvisible,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a password';
+                            }
+                            if (value.length < 8) {
+                              return 'Password should be at least 8 characters';
+                            }
+                            return null;
+                          },
+                        ),
                       ),
-                      hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.grey.shade500),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        borderSide: BorderSide(color: Colors.grey.shade500),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        borderSide: const BorderSide(color: Colors.blue),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        borderSide: const BorderSide(color: Colors.red),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        borderSide: const BorderSide(color: Colors.red),
-                      ),
-                    ),
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a password';
-                      }
-                      if (value.length < 8) {
-                        return 'Password must be at least 8 characters';
-                      }
-                      return null;
-                    },
+                    ],
                   ),
                 ),
 
@@ -214,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   child: const Text(
-                    'LOG IN',
+                    'Log In',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -285,7 +305,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -321,17 +341,26 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _signIn() async {
-    String email = _emailcontroller.text;
-    String password = _passwordcontroller.text;
+  Future<void> _signIn() async {
+    try {
+      User? user = await _auth.signinMethod(
+        _emailcontroller.text,
+        _passwordcontroller.text,
+      );
 
-    User? user = await _auth.signinMethod(email, password);
-
-    if (user != null) {
-      print("Login Successful");
-      Navigator.pushNamed(context, '/homescreen');
-    } else {
-      print("Error Occurred");
+      if (user != null) {
+        Navigator.pushNamed(context, '/homescreen');
+      } else {
+        _showErrorMessage('Incorrect email or password.');
+      }
+    } catch (e) {
+      _showErrorMessage('Login failed. Please try again.');
     }
+  }
+
+  void _showErrorMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), backgroundColor: Colors.red),
+    );
   }
 }
