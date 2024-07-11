@@ -284,9 +284,34 @@ class _LoginScreenState extends State<LoginScreen> {
                         border: Border.all(color: Colors.grey.shade600),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Image.asset(
-                        'assets/images/google.png',
-                        height: 50,
+                      child: GestureDetector(
+                        onTap: () async {
+                          try {
+                            User? user = await _auth.signInWithGoogle();
+                            if (user != null) {
+                              Navigator.pushReplacementNamed(
+                                  context, '/homescreen');
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content:
+                                      Text('Sign in failed. Please try again.'),
+                                ),
+                              );
+                            }
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    'An error occurred. Please try again.'),
+                              ),
+                            );
+                          }
+                        },
+                        child: Image.asset(
+                          'assets/images/google.png',
+                          height: 50,
+                        ),
                       ),
                     ),
                     const SizedBox(

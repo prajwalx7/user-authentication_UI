@@ -367,7 +367,7 @@ class _SignupPageState extends State<SignupScreen> {
       String email = _emailcontroller.text;
       String password = _passwordcontroller.text;
 
-      User? user = await _auth.signupMethod(email, password);
+      User? user = await _auth.signUpMethod(context,email, password);
 
       if (user != null && mounted) {
         // print("User Created");
