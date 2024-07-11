@@ -274,7 +274,31 @@ class _SignupPageState extends State<SignupScreen> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            try {
+                              User? user = await _auth.signInWithGoogle();
+                              if (user != null) {
+                                Navigator.pushReplacementNamed(
+                                    context, '/homescreen');
+                              } else {
+                                print("Sign in failed");
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        'Sign in failed. Please try again.'),
+                                  ),
+                                );
+                              }
+                            } catch (e) {
+                              print("Error signing in: $e");
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                      'An error occurred. Please try again.'),
+                                ),
+                              );
+                            }
+                          },
                           child: Image.asset(
                             'assets/images/google.png',
                             height: 50,
