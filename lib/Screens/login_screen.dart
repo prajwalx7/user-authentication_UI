@@ -152,43 +152,43 @@ class _LoginScreenState extends State<LoginScreen> {
                           textInputAction: TextInputAction.done,
                           style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.transparent,
-                              prefixIcon: const Icon(
-                                CupertinoIcons.lock,
-                                color: Colors.white,
-                              ),
-                              hintText: 'Password',
-                              hintStyle: TextStyle(color: Colors.grey.shade500),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade500),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                borderSide:
-                                    const BorderSide(color: Colors.blue),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                borderSide: const BorderSide(color: Colors.red),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                borderSide: const BorderSide(color: Colors.red),
-                              ),
-                              suffixIcon: IconButton(
-                                icon: _isvisible
-                                    ? const Icon(CupertinoIcons.eye_slash)
-                                    : const Icon(CupertinoIcons.eye),
-                                color: Colors.white54,
-                                onPressed: () {
-                                  setState(() {
-                                    _isvisible = !_isvisible;
-                                  });
-                                },
-                              )),
+                            filled: true,
+                            fillColor: Colors.transparent,
+                            prefixIcon: const Icon(
+                              CupertinoIcons.lock,
+                              color: Colors.white,
+                            ),
+                            hintText: 'Password',
+                            hintStyle: TextStyle(color: Colors.grey.shade500),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade500),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide: const BorderSide(color: Colors.blue),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide: const BorderSide(color: Colors.red),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              borderSide: const BorderSide(color: Colors.red),
+                            ),
+                            suffixIcon: IconButton(
+                              icon: _isvisible
+                                  ? const Icon(CupertinoIcons.eye_slash)
+                                  : const Icon(CupertinoIcons.eye),
+                              color: Colors.white54,
+                              onPressed: () {
+                                setState(() {
+                                  _isvisible = !_isvisible;
+                                });
+                              },
+                            ),
+                          ),
                           obscureText: _isvisible,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -240,9 +240,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text(
                     'Log In',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
 
@@ -297,6 +298,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
+                                  backgroundColor: Colors.red,
                                   content:
                                       Text('Sign in failed. Please try again.'),
                                 ),
@@ -305,6 +307,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
+                                backgroundColor: Colors.red,
                                 content: Text(
                                     'An error occurred. Please try again.'),
                               ),
@@ -354,7 +357,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         "Sign up",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: buttoncolor),
+                          fontWeight: FontWeight.bold,
+                          color: buttoncolor,
+                        ),
                       ),
                     )
                   ],

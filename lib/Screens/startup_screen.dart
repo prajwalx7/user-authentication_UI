@@ -95,9 +95,10 @@ class _StatrupScreenState extends State<StatrupScreen> {
                     ),
                     buttonText: 'Get Started',
                     buttontextstyle: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400),
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               )

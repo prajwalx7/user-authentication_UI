@@ -181,41 +181,43 @@ class _SignupPageState extends State<SignupScreen> {
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.transparent,
-                          prefixIcon: const Icon(CupertinoIcons.lock,
-                              color: Colors.white),
-                          labelStyle: const TextStyle(color: buttoncolor),
-                          hintText: 'Password',
-                          hintStyle: TextStyle(color: Colors.grey.shade600),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            borderSide: BorderSide(color: Colors.grey.shade400),
+                        filled: true,
+                        fillColor: Colors.transparent,
+                        prefixIcon: const Icon(CupertinoIcons.lock,
+                            color: Colors.white),
+                        labelStyle: const TextStyle(color: buttoncolor),
+                        hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.grey.shade600),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: BorderSide(color: Colors.grey.shade400),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 75, 57, 239),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 75, 57, 239),
-                            ),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            borderSide: const BorderSide(color: Colors.red),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            borderSide: const BorderSide(color: Colors.red),
-                          ),
-                          suffixIcon: IconButton(
-                              icon: _isvisible
-                                  ? const Icon(CupertinoIcons.eye_slash)
-                                  : const Icon(CupertinoIcons.eye),
-                              color: Colors.white54,
-                              onPressed: () {
-                                setState(() {
-                                  _isvisible = !_isvisible;
-                                });
-                              })),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: _isvisible
+                              ? const Icon(CupertinoIcons.eye_slash)
+                              : const Icon(CupertinoIcons.eye),
+                          color: Colors.white54,
+                          onPressed: () {
+                            setState(() {
+                              _isvisible = !_isvisible;
+                            });
+                          },
+                        ),
+                      ),
                       obscureText: _isvisible,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -242,9 +244,10 @@ class _SignupPageState extends State<SignupScreen> {
                     child: const Text(
                       "Sign Up",
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -299,6 +302,7 @@ class _SignupPageState extends State<SignupScreen> {
                                 print("Sign in failed");
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
+                                    backgroundColor: Colors.red,
                                     content: Text(
                                         'Sign in failed. Please try again.'),
                                   ),
@@ -308,6 +312,7 @@ class _SignupPageState extends State<SignupScreen> {
                               print("Error signing in: $e");
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
+                                  backgroundColor: Colors.red,
                                   content: Text(
                                       'An error occurred. Please try again.'),
                                 ),
