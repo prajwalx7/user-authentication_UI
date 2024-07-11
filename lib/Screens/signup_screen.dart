@@ -73,7 +73,7 @@ class _SignupPageState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
                   // username
                   Padding(
@@ -103,7 +103,22 @@ class _SignupPageState extends State<SignupScreen> {
                             color: Color.fromARGB(255, 75, 57, 239),
                           ),
                         ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please set a username';
+                        }
+
+                        return null;
+                      },
                     ),
                   ),
                   const SizedBox(height: 15),
@@ -324,7 +339,7 @@ class _SignupPageState extends State<SignupScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -332,12 +347,9 @@ class _SignupPageState extends State<SignupScreen> {
                         "Already have an acount?",
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
-                      const SizedBox(width: 3),
                       TextButton(
-                        style: ElevatedButton.styleFrom(
+                        style: TextButton.styleFrom(
                           backgroundColor: maincolor,
-                          elevation: 0.0,
-                          padding: EdgeInsets.zero,
                         ),
                         onPressed: () {
                           Navigator.pushReplacementNamed(
@@ -367,7 +379,7 @@ class _SignupPageState extends State<SignupScreen> {
       String email = _emailcontroller.text;
       String password = _passwordcontroller.text;
 
-      User? user = await _auth.signUpMethod(context,email, password);
+      User? user = await _auth.signUpMethod(context, email, password);
 
       if (user != null && mounted) {
         // print("User Created");

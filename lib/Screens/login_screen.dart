@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(40.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
@@ -84,6 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 // username
                 Form(
@@ -218,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
 
                 //Button
@@ -340,12 +343,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       "Don't have an acount?",
                       style: TextStyle(fontSize: 14, color: Colors.white),
                     ),
-                    const SizedBox(width: 3),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
+                    TextButton(
+                      style: TextButton.styleFrom(
                         backgroundColor: maincolor,
-                        elevation: 0.0,
-                        padding: EdgeInsets.zero,
                       ),
                       onPressed: () {
                         Navigator.pushReplacementNamed(
@@ -358,7 +358,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )
                   ],
-                )
+                ),
               ],
             ),
           ],
