@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_page/Screens/colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,12 +19,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               "User Logged In Successfully",
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 22.sp),
             ),
-            const SizedBox(
-              height: 25,
+            SizedBox(
+              height: 25.h,
             ),
             GestureDetector(
               onTap: () {
@@ -31,16 +32,17 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pushNamed(context, '/loginscreen');
               },
               child: Container(
-                height: 50,
-                width: 140,
+                height: 50.h,
+                width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                   color: buttoncolor,
                 ),
-                child: const Center(
+                child: Center(
                     child: Text(
                   "Sign Out",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
                 )),
               ),
             ),

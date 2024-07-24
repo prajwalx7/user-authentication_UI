@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_page/Screens/colors.dart';
 import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
@@ -54,30 +55,30 @@ class _SignupPageState extends State<SignupScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 20.h),
                     child: Container(
                       child: Lottie.asset(
                         "assets/animations/signup.json",
                         fit: BoxFit.cover,
-                        height: 200,
-                        width: 200,
+                        height: 150.h,
+                        width: 180.w,
                       ),
                     ),
                   ),
-                  const Text(
+                  Text(
                     'Hurray New User!',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 30.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: 15.h,
                   ),
                   // username
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: EdgeInsets.symmetric(horizontal: 30.0.w),
                     child: TextFormField(
                       controller: _usernamecontroller,
                       // maxLength: 15,
@@ -94,21 +95,21 @@ class _SignupPageState extends State<SignupScreen> {
                         hintText: 'Username',
                         hintStyle: TextStyle(color: Colors.grey.shade600),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: BorderSide(color: Colors.grey.shade400),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(
                             color: Color.fromARGB(255, 75, 57, 239),
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(color: Colors.red),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(color: Colors.red),
                         ),
                       ),
@@ -121,11 +122,11 @@ class _SignupPageState extends State<SignupScreen> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
 
                   //Email
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: EdgeInsets.symmetric(horizontal: 30.0.w),
                     child: TextFormField(
                       controller: _emailcontroller,
                       cursorColor: Colors.white,
@@ -140,21 +141,21 @@ class _SignupPageState extends State<SignupScreen> {
                         hintText: 'Email',
                         hintStyle: TextStyle(color: Colors.grey.shade600),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: BorderSide(color: Colors.grey.shade400),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(
                             color: Color.fromARGB(255, 75, 57, 239),
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(color: Colors.red),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(color: Colors.red),
                         ),
                       ),
@@ -169,11 +170,11 @@ class _SignupPageState extends State<SignupScreen> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
 
                   //Password
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: EdgeInsets.symmetric(horizontal: 30.0.w),
                     child: TextFormField(
                       controller: _passwordcontroller,
                       cursorColor: Colors.white,
@@ -189,21 +190,21 @@ class _SignupPageState extends State<SignupScreen> {
                         hintText: 'Password',
                         hintStyle: TextStyle(color: Colors.grey.shade600),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: BorderSide(color: Colors.grey.shade400),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(
                             color: Color.fromARGB(255, 75, 57, 239),
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(color: Colors.red),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(18.0.r),
                           borderSide: const BorderSide(color: Colors.red),
                         ),
                         suffixIcon: IconButton(
@@ -230,31 +231,32 @@ class _SignupPageState extends State<SignupScreen> {
                       },
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 20.h,
                   ),
                   ElevatedButton(
                     onPressed: _signUp,
-                    style: const ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(buttoncolor),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          const WidgetStatePropertyAll(buttoncolor),
                       padding: WidgetStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                        EdgeInsets.symmetric(horizontal: 30.w, vertical: 8.h),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       "Sign Up",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 20.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                     child: Row(
                       children: [
                         Expanded(
@@ -264,7 +266,7 @@ class _SignupPageState extends State<SignupScreen> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                           child: Text(
                             'or continue with',
                             style: TextStyle(color: Colors.grey.shade400),
@@ -279,17 +281,17 @@ class _SignupPageState extends State<SignupScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 20.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10.r),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey.shade600),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: GestureDetector(
                           onTap: () async {
@@ -321,36 +323,37 @@ class _SignupPageState extends State<SignupScreen> {
                           },
                           child: Image.asset(
                             'assets/images/google.png',
-                            height: 50,
+                            height: 40.h,
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 20,
+                      SizedBox(
+                        width: 20.w,
                       ),
                       Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10.r),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey.shade600),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: GestureDetector(
                           onTap: () {},
                           child: Image.asset(
                             'assets/images/apple.png',
-                            height: 50,
+                            color: Colors.white,
+                            height: 40.h,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "Already have an acount?",
-                        style: TextStyle(fontSize: 14, color: Colors.white),
+                        style: TextStyle(fontSize: 14.sp, color: Colors.white),
                       ),
                       TextButton(
                         style: TextButton.styleFrom(
