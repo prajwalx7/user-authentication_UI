@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         designSize: const Size(360, 640),
         builder: (context, _) {
           return MaterialApp(
-            initialRoute: '/signupscreen',
+            initialRoute: '/loginscreen',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               textSelectionTheme: const TextSelectionThemeData(
@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
               '/loginscreen': (context) => const LoginScreen(),
               '/signupscreen': (context) => const SignupScreen(),
               '/homescreen': (context) => const HomeScreen(),
+              '/startupscreen': (context) => const StatrupScreen(),
             },
           );
         });

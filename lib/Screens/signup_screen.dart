@@ -81,7 +81,6 @@ class _SignupPageState extends State<SignupScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 30.0.w),
                     child: TextFormField(
                       controller: _usernamecontroller,
-                      // maxLength: 15,
                       cursorColor: Colors.white,
                       textInputAction: TextInputAction.next,
                       autofocus: true,
@@ -340,7 +339,7 @@ class _SignupPageState extends State<SignupScreen> {
                           onTap: () {},
                           child: Image.asset(
                             'assets/images/apple.png',
-                            color: Colors.white,
+                            color: Colors.grey.shade200,
                             height: 40.h,
                           ),
                         ),

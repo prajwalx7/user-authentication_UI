@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_page/Screens/colors.dart';
 import 'package:lottie/lottie.dart';
@@ -27,83 +28,72 @@ class _StatrupScreenState extends State<StatrupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: maincolor, //background color
-        child: Center(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // **********The Headline**********
-              SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 55),
-                      child: Text(
-                        'Embrace the Movie Experience',
-                        style: GoogleFonts.barlowCondensed(
-                            fontSize: 30, color: Colors.white),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              'Embrace the Movie Experience',
+              style: GoogleFonts.barlowCondensed(
+                  fontSize: 30.sp, color: Colors.white),
+            ),
+            SizedBox(height: 20.h),
+            Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(20.0.r),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: nonmaincolor, //animation background color
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20.r),
                       ),
                     ),
-                  ],
-                ),
-              ),
-
-              // **********The Lottie Animation**********
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: nonmaincolor, //animation background color
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
+                    width: 400.w,
+                    height: 300.h,
                   ),
-                  width: 400,
-                  height: 400,
                 ),
-              ),
-              Lottie.asset('assets/animations/splash.json'),
-
-              //**********Swipeable Button**********
-              Padding(
-                padding: const EdgeInsets.only(top: 600),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
-                  child: SwipeableButtonView(
-                    onWaitingProcess: () {
-                      Future.delayed(const Duration(seconds: 1), () {
-                        setState(() {
-                          isFinished = true;
-                        });
-                      });
-                    },
-                    onFinish: () async {
-                      await Navigator.pushReplacementNamed(
-                          context, '/loginscreen');
+                Lottie.asset('assets/animations/splash.json'),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10.h),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 40.w),
+                child: SwipeableButtonView(
+                  onWaitingProcess: () {
+                    Future.delayed(const Duration(seconds: 1), () {
                       setState(() {
-                        isFinished = false;
+                        isFinished = true;
                       });
-                    },
-                    activeColor: buttoncolor,
-                    isFinished: isFinished,
-                    buttonWidget: const Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      color: Colors.black,
-                    ),
-                    buttonText: 'Get Started',
-                    buttontextstyle: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    });
+                  },
+                  onFinish: () async {
+                    await Navigator.pushReplacementNamed(
+                        context, '/loginscreen');
+                    setState(() {
+                      isFinished = false;
+                    });
+                  },
+                  activeColor: buttoncolor,
+                  isFinished: isFinished,
+                  buttonWidget: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.black,
+                  ),
+                  buttonText: 'Get Started',
+                  buttontextstyle: TextStyle(
+                    fontSize: 18.sp,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
