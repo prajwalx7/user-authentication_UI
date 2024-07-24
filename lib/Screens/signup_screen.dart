@@ -6,7 +6,6 @@ import 'package:login_page/Screens/colors.dart';
 import 'package:login_page/services/auth.dart';
 import 'package:lottie/lottie.dart';
 
-
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -336,11 +335,9 @@ class _SignupPageState extends State<SignupScreen> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: GestureDetector(
-                          onTap: ()  {
-                            
-                          },
+                          onTap: () {},
                           child: Image.asset(
-                            'assets/images/github.jpeg',
+                            'assets/images/apple.png',
                             height: 50,
                           ),
                         ),
@@ -370,7 +367,7 @@ class _SignupPageState extends State<SignupScreen> {
                             color: buttoncolor,
                           ),
                         ),
-                      )
+                      ),
                     ],
                   )
                 ],
@@ -398,7 +395,3 @@ class _SignupPageState extends State<SignupScreen> {
     }
   }
 }
-
-
-
-

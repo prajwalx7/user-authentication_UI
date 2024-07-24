@@ -330,7 +330,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Image.asset(
-                        'assets/images/github.jpeg',
+                        'assets/images/apple.png',
                         height: 50,
                       ),
                     ),
