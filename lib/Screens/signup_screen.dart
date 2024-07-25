@@ -33,16 +33,11 @@ class _SignupPageState extends State<SignupScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
+      statusBarColor: maincolor,
       statusBarIconBrightness: Brightness.light,
     ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
       backgroundColor: maincolor,
@@ -129,7 +124,7 @@ class _SignupPageState extends State<SignupScreen> {
                     child: TextFormField(
                       controller: _emailcontroller,
                       cursorColor: Colors.white,
-                      textInputAction: TextInputAction.done,
+                      textInputAction: TextInputAction.next,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         filled: true,
@@ -177,7 +172,7 @@ class _SignupPageState extends State<SignupScreen> {
                     child: TextFormField(
                       controller: _passwordcontroller,
                       cursorColor: Colors.white,
-                      textInputAction: TextInputAction.next,
+                      textInputAction: TextInputAction.done,
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(

@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_page/Screens/colors.dart';
+import 'package:login_page/Screens/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,15 +29,27 @@ class HomeScreen extends StatelessWidget {
               height: 25.h,
             ),
             GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushNamed(context, '/loginscreen');
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  (Route<dynamic> route) => false,
+                );
+
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  SystemChrome.setSystemUIOverlayStyle(
+                      const SystemUiOverlayStyle(
+                    statusBarColor: maincolor,
+                    statusBarIconBrightness: Brightness.light,
+                  ));
+                });
               },
               child: Container(
-                height: 50.h,
-                width: double.infinity,
+                height: 30.h,
+                width: 100.w,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.r),
+                  borderRadius: BorderRadius.circular(6.r),
                   color: buttoncolor,
                 ),
                 child: Center(

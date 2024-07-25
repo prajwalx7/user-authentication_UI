@@ -14,7 +14,41 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _setStatusBarColor();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _setStatusBarColor();
+    }
+  }
+
+  void _setStatusBarColor() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: maincolor,
+      statusBarIconBrightness: Brightness.light,
+    ));
+
+    @override
+    void dispose() {
+      _emailcontroller.dispose();
+      _passwordcontroller.dispose();
+      super.dispose();
+    }
+  }
+
   final AuthServices _auth = AuthServices();
   final _formKey = GlobalKey<FormState>();
 
@@ -24,25 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isvisible = true;
 
   @override
-  void dispose() {
-    _emailcontroller.dispose();
-    _passwordcontroller.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: maincolor,
-      statusBarIconBrightness: Brightness.light,
-    ));
-  }
-
-  @override
   Widget build(BuildContext context) {
+    _setStatusBarColor(); 
     return SafeArea(
       child: Scaffold(
+        appBar: null,
         backgroundColor: maincolor,
         body: ListView(
           children: [

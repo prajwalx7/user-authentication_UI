@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_page/Screens/colors.dart';
 import 'package:login_page/Screens/home_screen.dart';
@@ -11,6 +12,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.transparent,
+    statusBarColor: maincolor,
+    statusBarIconBrightness: Brightness.light,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +38,6 @@ class MyApp extends StatelessWidget {
               primaryColor: maincolor,
               scaffoldBackgroundColor: const Color(0xFF212121),
             ),
-            home: const StatrupScreen(),
             routes: {
               '/loginscreen': (context) => const LoginScreen(),
               '/signupscreen': (context) => const SignupScreen(),
